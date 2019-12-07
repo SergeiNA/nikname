@@ -4,9 +4,9 @@ if(NOT DEFINED ENV{TRAVIS_BUILD_NUMBER})
     set(ENV{TRAVIS_BUILD_NUMBER} 777)
 endif()
 
-project(nikname VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+project(nickname VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
-add_executable(nikname nikname.cpp radixTrie.h radixTrie.cpp)
+add_executable(nickname nickname.cpp radixTrie.h radixTrie.cpp)
 
 add_executable(test_main_en test_main_en.cpp radixTrie.h radixTrie.cpp)
 add_executable(test_main_ru test_main_ru.cpp radixTrie.h radixTrie.cpp)
@@ -14,7 +14,7 @@ add_executable(test_main_ru test_main_ru.cpp radixTrie.h radixTrie.cpp)
 find_package(Threads REQUIRED)
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
-set_target_properties(nikname test_main_en test_main_ru PROPERTIES
+set_target_properties(nickname test_main_en test_main_ru PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
     COMPILE_OPTIONS "-Wpedantic;-Wall;-Wextra"
@@ -25,7 +25,7 @@ set_target_properties(test_main_en test_main_ru PROPERTIES
     INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
 )
 
-target_link_libraries(nikname
+target_link_libraries(nickname
     Threads::Threads
 )
 
@@ -39,7 +39,7 @@ target_link_libraries(test_main_ru
     ${Boost_LIBRARIES}
 )
 
-install(TARGETS nikname RUNTIME DESTINATION bin)
+install(TARGETS nickname RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 
